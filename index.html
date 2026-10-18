@@ -79,7 +79,7 @@
     .dd-hero p { margin-top: 8px; font-size: .92rem; color: var(--dd-muted); }
     .dd-badge {
       display: inline-flex; align-items: center; gap: 6px; margin-top: 12px;
-      background: rgba(255,48,8,.08); border: 1px solid rgba(255,48,8,.2);
+      background: rgba(0,140,255,.08); border: 1px solid rgba(0,140,255,.2);
       border-radius: 999px; padding: 6px 16px;
       font-size: .74rem; font-weight: 700; color: var(--dd-red);
     }
@@ -114,15 +114,15 @@
       width: 100%; margin: 16px 0 12px; padding: 18px;
       background: var(--dd-red); border: none; border-radius: 16px;
       font-size: 1.1rem; font-weight: 800; color: #fff; cursor: pointer;
-      box-shadow: 0 8px 28px rgba(0,0,0,.20);
+      box-shadow: 0 8px 28px rgba(0,140,255,.28);
       transition: transform .15s, box-shadow .15s;
       animation: dd-fadeUp .6s .1s ease both, dd-cta-pulse 3s 1s ease-in-out infinite;
       display: block; text-decoration: none; text-align: center; line-height: normal;
       touch-action: manipulation; -webkit-appearance: none; letter-spacing: .01em;
     }
     @keyframes dd-cta-pulse {
-      0%,100% { box-shadow: 0 8px 28px rgba(0,0,0,.20); }
-      50%      { box-shadow: 0 10px 40px rgba(0,0,0,.30); }
+      0%,100% { box-shadow: 0 8px 28px rgba(0,140,255,.28); }
+      50%      { box-shadow: 0 10px 40px rgba(0,140,255,.45); }
     }
     .dd-cta-btn:active { transform: scale(.97); }
 
@@ -205,7 +205,7 @@
       background: var(--dd-red); border-radius: 16px;
       font-size: 1.08rem; font-weight: 800; color: #fff;
       text-decoration: none; text-align: center;
-      box-shadow: 0 8px 28px rgba(0,0,0,.22);
+      box-shadow: 0 8px 28px rgba(0,140,255,.28);
       animation: dd-cta-pulse 3s ease-in-out infinite;
     }
 
@@ -219,89 +219,10 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
-
-    /* AGE GATE */
-    .age-gate {
-      position: fixed; inset: 0; z-index: 9999;
-      display: flex; align-items: center; justify-content: center;
-      padding: 20px;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .age-gate.hidden { display: none; }
-    .age-card {
-      width: min(100%, 400px);
-      padding: 28px 24px 24px;
-      border: 1px solid var(--dd-border);
-      border-radius: 22px;
-      background: var(--dd-surface);
-      box-shadow: 0 24px 64px rgba(0,0,0,.12);
-      text-align: center;
-    }
-    .age-progress {
-      display: flex; gap: 7px; margin-bottom: 22px;
-    }
-    .age-progress span {
-      height: 4px; flex: 1; border-radius: 999px;
-      background: var(--dd-border);
-      transition: background .2s;
-    }
-    .age-progress span.active { background: var(--dd-red); }
-    .age-badge-icon {
-      width: 62px; height: 62px; margin: 0 auto 16px;
-      display: flex; align-items: center; justify-content: center;
-      border: 2px solid var(--dd-red); border-radius: 18px;
-      color: var(--dd-red); background: rgba(0,140,255,.08);
-      font-size: 20px; font-weight: 900; letter-spacing: -.02em;
-    }
-    .age-card h2 {
-      color: var(--dd-dark); font-size: 22px; font-weight: 900;
-      letter-spacing: -.03em; line-height: 1.1;
-    }
-    .age-card p {
-      margin: 10px auto 0; max-width: 300px;
-      color: var(--dd-muted); font-size: 13px; line-height: 1.5;
-    }
-    .age-actions {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 10px; margin-top: 20px;
-    }
-    .age-btn {
-      min-height: 50px; border: 1px solid var(--dd-border);
-      border-radius: 13px; color: var(--dd-dark);
-      background: #fff; cursor: pointer;
-      font-size: 15px; font-weight: 800; font-family: inherit;
-      transition: transform .15s, border-color .15s, filter .15s;
-    }
-    .age-btn:hover { border-color: var(--dd-red); filter: brightness(.97); }
-    .age-btn:active { transform: scale(.97); }
-    .age-btn.primary {
-      border-color: transparent;
-      background: var(--dd-red); color: #fff;
-      box-shadow: 0 6px 20px rgba(0,140,255,.25);
-    }
-    .age-fineprint {
-      margin-top: 14px; font-size: 11px; color: #aaa; line-height: 1.4;
-    }
   </style>
 <base target="_blank">
 </head>
 <body>
-
-<div class="age-gate" id="ageGate">
-  <div class="age-card">
-    <div class="age-progress"><span class="active"></span></div>
-    <div class="age-badge-icon">18+</div>
-    <h2>Are you 18 or older?</h2>
-    <p>Please confirm your age to continue.</p>
-    <div class="age-actions">
-      <button class="age-btn" type="button" id="ageNo">No</button>
-      <button class="age-btn primary" type="button" id="ageYes">Yes</button>
-    </div>
-    <p class="age-fineprint">By continuing, you confirm the information you provided is accurate.</p>
-  </div>
-</div>
 
 <div class="dd-bg" id="ddBgLayer"></div>
 
@@ -310,7 +231,7 @@
 
     <div class="dd-wordmark">
       <div class="dd-logo-icon">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Venmo_logo.png" style="background:#fff;padding:10px;" alt="DoorDash">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Venmo_logo.png" style="background:#fff;padding:10px;" alt="Venmo">
       </div>
     </div>
 
@@ -331,8 +252,6 @@
     </div>
 
     <a id="ddMainCta" class="dd-cta-btn" href="https://linkthem.net/aff_c?offer_id=2862&aff_id=2609">Claim Your $700 →</a>
-
-
 
     <div class="dd-steps-card">
       <div class="dd-steps-title">How It Works</div>
@@ -371,18 +290,8 @@
 </div>
 
 <div class="dd-sticky-cta" id="ddStickyCta">
-  <a id="ddStickyCtaBtn" href="https://linkthem.net/aff_c?offer_id=2862&aff_id=2609">Claim Your $700 →</a>
+  <a href="https://linkthem.net/aff_c?offer_id=2862&aff_id=2609">Claim Your $700 →</a>
 </div>
-
-<script>
-// Age gate — both yes and no dismiss it
-document.getElementById('ageYes').addEventListener('click', function(){
-  document.getElementById('ageGate').classList.add('hidden');
-});
-document.getElementById('ageNo').addEventListener('click', function(){
-  document.getElementById('ageGate').classList.add('hidden');
-});
-</script>
 
 <script>
 (function(){
